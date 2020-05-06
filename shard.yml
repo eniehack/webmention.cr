@@ -1,0 +1,9 @@
+name: webmention-cr
+version: 0.1.0
+
+authors:
+  - eniehack <eniehack@outlook.jp>
+
+crystal: 0.34.0
+
+license: MIT
