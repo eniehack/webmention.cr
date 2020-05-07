@@ -35,7 +35,7 @@ module WebMention
     end
 
     private def strip_html(html : String)
-      XML.parse(html).xpath_nodes("//link[@rel='webmention']/@href").each do |element|
+      XML.parse(html).xpath_nodes("//link[@rel='webmention']/@href|//a[@rel='webmention']/@href").each do |element|
         @endpoint_candidates.add URI.parse element.text
       end
     end
