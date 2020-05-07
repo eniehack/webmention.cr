@@ -1,6 +1,6 @@
 # webmention-cr
 
-TODO: Write a description here
+[WebMention](https://www.w3.org/TR/webmention) library for Crystal lang.
 
 ## Installation
 
@@ -9,7 +9,7 @@ TODO: Write a description here
    ```yaml
    dependencies:
      webmention-cr:
-       github: your-github-user/webmention-cr
+       gitlab: eniehack/webmention-cr
    ```
 
 2. Run `shards install`
@@ -28,7 +28,7 @@ TODO: Write development instructions here
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/webmention-cr/fork>)
+1. Fork it (<https://gitlab.com/eniehack/webmention-cr/-/forks/new>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -36,4 +36,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [eniehack](https://github.com/your-github-user) - creator and maintainer
+- [eniehack](https://gitlab.com/eniehack) - creator and maintainer
