@@ -21,7 +21,7 @@ module WebMention
     end
 
     private def strip_header(str : String)
-      @endpoint_candidates.add URI.parse str.sub(/<((\w|\W)+)>; rel=webmention/) { $1 }
+      @endpoint_candidates.add URI.parse str.sub(/<(.+)>; (rel=webmention|rel="webmention")/) { $1 }
     end
 
     private def make_endpoint
