@@ -12,7 +12,7 @@ module WebMention
     end
 
     def discover : String
-      if @resp.headers.includes_word?("link", "rel=webmention")
+      if @resp.headers.includes_word?("link", "rel=webmention") || @resp.headers.includes_word?("link", %(rel="webmention"))
         strip_header @resp.headers["link"]
       end
       strip_html @resp.body
