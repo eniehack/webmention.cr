@@ -12,7 +12,7 @@ module WebMention
     end
 
     def discover : String
-      if @resp.headers.includes_word?("link", "rel=webmention")
+      if @resp.headers.includes_word?("link", "rel=webmention") || @resp.headers.includes_word?("link", %(rel="webmention"))
         strip_header @resp.headers["link"]
       end
       strip_html @resp.body
@@ -21,7 +21,7 @@ module WebMention
     end
 
     private def strip_header(str : String)
-      @endpoint_candidates.add URI.parse str.sub(/<((\w|\W)+)>; rel=webmention/) { $1 }
+      @endpoint_candidates.add URI.parse str.sub(/<(.+)>; (rel=webmention|rel="webmention")/) { $1 }
     end
 
     private def make_endpoint

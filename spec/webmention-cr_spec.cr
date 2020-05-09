@@ -53,4 +53,10 @@ describe WebMention::Discover do
     dscv.discover.should eq("https://webmention.rocks/test/7/webmention")
   end
 
+  it "Webmention.rocks - Discovery Test #8" do
+    url = URI.parse "https://webmention.rocks/test/8"
+    resp = HTTP::Client.get(url, USERAGENT)
+    dscv = WebMention::Discover.new(resp, url)
+    dscv.discover.should eq("https://webmention.rocks/test/8/webmention")
+  end
 end
