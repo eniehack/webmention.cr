@@ -11,7 +11,7 @@ module WebMention
       @endpoint_candidates = Set(URI).new
     end
 
-    def discover : String
+    def discover : URI
       if @resp.headers.includes_word?("link", "webmention") || @resp.headers.includes_word?("link", %(rel="webmention"))
         strip_header @resp.headers["link"]
       end
@@ -35,7 +35,7 @@ module WebMention
           element.scheme = @target_url.scheme
           element.host = @target_url.host
         end
-        @webmention_endpoint.add element.to_s
+        @webmention_endpoint.add element
       end
     end
 
