@@ -59,4 +59,32 @@ describe WebMention::Discover do
     dscv = WebMention::Discover.new(resp, url)
     dscv.discover.should eq("https://webmention.rocks/test/8/webmention")
   end
+
+  it "Webmention.rocks - Discovery Test #9" do
+    url = URI.parse "https://webmention.rocks/test/9"
+    resp = HTTP::Client.get(url, USERAGENT)
+    dscv = WebMention::Discover.new(resp, url)
+    dscv.discover.should eq("https://webmention.rocks/test/9/webmention")
+  end
+
+  it "Webmention.rocks - Discovery Test #10" do
+    url = URI.parse "https://webmention.rocks/test/10"
+    resp = HTTP::Client.get(url, USERAGENT)
+    dscv = WebMention::Discover.new(resp, url)
+    dscv.discover.should eq("https://webmention.rocks/test/10/webmention")
+  end
+
+  it "Webmention.rocks - Discovery Test #11" do
+    url = URI.parse "https://webmention.rocks/test/11"
+    resp = HTTP::Client.get(url, USERAGENT)
+    dscv = WebMention::Discover.new(resp, url)
+    dscv.discover.should eq("https://webmention.rocks/test/11/webmention")
+  end
+
+  it "Webmention.rocks - Discovery Test #12" do
+    url = URI.parse "https://webmention.rocks/test/12"
+    resp = HTTP::Client.get(url, USERAGENT)
+    dscv = WebMention::Discover.new(resp, url)
+    dscv.discover.should eq("https://webmention.rocks/test/12/webmention")
+  end
 end

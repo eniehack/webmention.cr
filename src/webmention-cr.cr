@@ -21,7 +21,12 @@ module WebMention
     end
 
     private def strip_header(str : String)
-      @endpoint_candidates.add URI.parse str.sub(/<(.+)>; (rel=webmention|rel="webmention")/) { $1 }
+      str.gsub(/^<(.+)>; rel=("(.+)"|(.+))$/) do
+        $2.gsub(/\"/, "").split(" ").each do |e|
+          next unless e == "webmention"
+          @endpoint_candidates.add URI.parse $1
+        end
+      end
     end
 
     private def make_endpoint
@@ -35,8 +40,11 @@ module WebMention
     end
 
     private def strip_html(html : String)
-      XML.parse(html).xpath_nodes("//link[@rel='webmention']/@href|//a[@rel='webmention']/@href").each do |element|
-        @endpoint_candidates.add URI.parse element.text
+      XML.parse(html).xpath_nodes("//link[contains(@rel, 'webmention')]|//a[contains(@rel, 'webmention')]").each do |element|
+        element.attributes["rel"].content.split(" ").each do |e|
+          next unless e == "webmention"
+          @endpoint_candidates.add URI.parse element.attributes["href"].content
+        end
       end
     end
   end
