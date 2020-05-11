@@ -7,7 +7,7 @@ module WebMention
   VERSION = "0.1.0"
   class WebMention::Discover
     def initialize(@resp : HTTP::Client::Response, @target_url : URI)
-      @webmention_endpoint = Set(String).new
+      @webmention_endpoint = Set(URI).new
       @endpoint_candidates = Set(URI).new
     end
 
