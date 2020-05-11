@@ -7,11 +7,11 @@ module WebMention
   VERSION = "0.1.0"
   class WebMention::Discover
     def initialize(@resp : HTTP::Client::Response, @target_url : URI)
-      @webmention_endpoint = Set(String).new
+      @webmention_endpoint = Set(URI).new
       @endpoint_candidates = Set(URI).new
     end
 
-    def discover : String
+    def discover : URI
       if @resp.headers.includes_word?("link", "webmention") || @resp.headers.includes_word?("link", %(rel="webmention"))
         strip_header @resp.headers["link"]
       end
@@ -35,7 +35,10 @@ module WebMention
           element.scheme = @target_url.scheme
           element.host = @target_url.host
         end
-        @webmention_endpoint.add element.to_s
+        if element.path.empty?
+          element.path = @target_url.path
+        end
+        @webmention_endpoint.add element
       end
     end
 
