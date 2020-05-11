@@ -13,7 +13,9 @@ module WebMention
 
     def discover : URI
       if @resp.headers.includes_word?("link", "webmention") || @resp.headers.includes_word?("link", %(rel="webmention"))
-        strip_header @resp.headers["link"]
+        @resp.headers["link"].split(",").each do |element|
+          strip_header element
+        end
       end
       strip_html @resp.body
       make_endpoint
