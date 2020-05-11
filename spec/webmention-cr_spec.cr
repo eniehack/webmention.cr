@@ -18,10 +18,10 @@ end
 describe WebMention::Discover do
   discover_test 1, 14
 
-  it "Webmention.rocks - Discovery Test #15" do
-    url = URI.parse "https://webmention.rocks/test/15"
+  it "Webmention.rocks - Discovery Test No.15" do
+    url = URI.parse "#{WEBMENTIONROCKS}/test/15"
     resp = HTTP::Client.get(url, USERAGENT)
     dscv = WebMention::Discover.new(resp, url)
-    dscv.discover.should eq("https://webmention.rocks/test/15")
+    dscv.discover.should eq(url)
   end
 end

@@ -35,6 +35,9 @@ module WebMention
           element.scheme = @target_url.scheme
           element.host = @target_url.host
         end
+        if element.path.empty?
+          element.path = @target_url.path
+        end
         @webmention_endpoint.add element
       end
     end
