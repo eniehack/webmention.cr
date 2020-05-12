@@ -48,6 +48,7 @@ module WebMention
       XML.parse(html).xpath_nodes("//link[contains(@rel, 'webmention')]|//a[contains(@rel, 'webmention')]").each do |element|
         element.attributes["rel"].content.split(" ").each do |e|
           next unless e == "webmention"
+          next if element.attributes["href"]?.nil?
           @endpoint_candidates.add URI.parse element.attributes["href"].content
         end
       end
