@@ -25,5 +25,5 @@ describe WebMention::Discover do
     dscv.discover.should eq(url)
   end
 
-  discover_test 16, 18
+  discover_test 16, 19
 end
