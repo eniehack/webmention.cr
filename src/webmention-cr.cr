@@ -23,7 +23,7 @@ module WebMention
     end
 
     private def strip_header(str : String)
-      str.gsub(/^<(.+)>; rel=("(.+)"|(.+))$/) do
+      str.gsub(/<(.+)>; rel=("(.+)"|(.+))/) do
         $2.gsub(/\"/, "").split(" ").each do |e|
           next unless e == "webmention"
           @endpoint_candidates.add URI.parse $1
