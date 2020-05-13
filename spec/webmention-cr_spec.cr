@@ -29,4 +29,5 @@ describe WebMention::Discover do
   discover_test_with_endpoint 15, "#{WEBMENTIONROCKS}/test/15"
   discover_test 16, 20
   discover_test_with_endpoint 21, "#{WEBMENTIONROCKS}/test/21/webmention?query=yes"
+  discover_test 22, 22
 end
