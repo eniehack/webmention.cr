@@ -37,8 +37,19 @@ module WebMention
           element.scheme = @target_url.scheme
           element.host = @target_url.host
         end
+
         if element.path.empty?
           element.path = @target_url.path
+        elsif element.path[0, 1] != "/"
+          array_path = @target_url.path.split("/")
+          array_path.pop
+          element.path = String.build do |str|
+            array_path.each do |e|
+              next if e.empty?
+              str << "/#{e}"
+            end
+            str << "/#{element.path}"
+          end
         end
         @webmention_endpoint.add element
       end
@@ -49,7 +60,7 @@ module WebMention
         element.attributes["rel"].content.split(" ").each do |e|
           next unless e == "webmention"
           next if element.attributes["href"]?.nil?
-          @endpoint_candidates.add URI.parse element.attributes["href"].content
+            @endpoint_candidates.add URI.parse element.attributes["href"].content
         end
       end
     end
