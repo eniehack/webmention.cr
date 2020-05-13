@@ -15,15 +15,18 @@ macro discover_test(first, last)
   {% end %}
 end
 
-describe WebMention::Discover do
-  discover_test 1, 14
-
-  it "Webmention.rocks - Discovery Test No.15" do
-    url = URI.parse "#{WEBMENTIONROCKS}/test/15"
+macro discover_test_with_endpoint(no, endpoint)
+  it "Webmention.rocks - Discovery Test No.{{no}}" do
+    url = URI.parse "#{WEBMENTIONROCKS}/test/{{no}}"
     resp = HTTP::Client.get(url, USERAGENT)
     dscv = WebMention::Discover.new(resp, url)
-    dscv.discover.should eq(url)
+    dscv.discover.should eq(URI.parse {{endpoint}})
   end
+end
 
+describe WebMention::Discover do
+  discover_test 1, 14
+  discover_test_with_endpoint 15, "#{WEBMENTIONROCKS}/test/15"
   discover_test 16, 20
+  discover_test_with_endpoint 21, "#{WEBMENTIONROCKS}/test/21/webmention?query=yes"
 end
