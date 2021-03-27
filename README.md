@@ -1,5 +1,8 @@
 # webmention-cr
 
+[![Docs status](https://img.shields.io/badge/docs-available-brightgreen.svg?style=flat-square)](https://eniehack.gitlab.io/webmention.cr/)
+![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/eniehack/webmention.cr/master?style=flat-square)
+
 [WebMention](https://www.w3.org/TR/webmention) library for Crystal lang.
 
 ## Installation
