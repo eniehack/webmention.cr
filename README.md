@@ -17,10 +17,15 @@
 ## Usage
 
 ```crystal
-require "webmention-cr"
-```
+require "webmention"
+require "http/client"
+require "uri"
 
-TODO: Write usage instructions here
+url = URI.parse "https://www.example.com"
+response = HTTP::Client.get url
+webmention = Webmention::Discover.new response, url
+endpoint = webmention.discover
+```
 
 ## Development
 
