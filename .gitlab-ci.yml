@@ -27,6 +27,17 @@ before_script:
   - shards install
 
 # If you are using built-in Crystal Spec.
-spec:
+"spec & format":
   script:
     - crystal spec
+    - crystal tool format --check
+
+pages:
+  stage: deploy
+  script:
+    - crystal docs -o public src/webmention.cr
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
