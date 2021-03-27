@@ -9,7 +9,7 @@ macro discover_test(first, last)
     it "Webmention.rocks - Discovery Test No.{{i}}" do
       url = URI.parse "#{WEBMENTIONROCKS}/test/{{i}}"
       resp = HTTP::Client.get(url, USERAGENT)
-      dscv = WebMention::Discover.new(resp, url)
+      dscv = Webmention::Discover.new(resp, url)
       dscv.discover.should eq(URI.parse "#{WEBMENTIONROCKS}/test/{{i}}/webmention")
     end
   {% end %}
@@ -19,12 +19,12 @@ macro discover_test_with_endpoint(no, endpoint)
   it "Webmention.rocks - Discovery Test No.{{no}}" do
     url = URI.parse "#{WEBMENTIONROCKS}/test/{{no}}"
     resp = HTTP::Client.get(url, USERAGENT)
-    dscv = WebMention::Discover.new(resp, url)
+    dscv = Webmention::Discover.new(resp, url)
     dscv.discover.should eq(URI.parse {{endpoint}})
   end
 end
 
-describe WebMention::Discover do
+describe Webmention::Discover do
   discover_test 1, 14
   discover_test_with_endpoint 15, "#{WEBMENTIONROCKS}/test/15"
   discover_test 16, 20

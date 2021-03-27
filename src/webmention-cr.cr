@@ -3,9 +3,9 @@ require "http/client"
 require "uri"
 require "xml"
 
-module WebMention
+module Webmention
   VERSION = "0.1.0"
-  class WebMention::Discover
+  class Discover
     def initialize(@resp : HTTP::Client::Response, @target_url : URI)
       @webmention_endpoint = Set(URI).new
       @endpoint_candidates = Set(URI).new
