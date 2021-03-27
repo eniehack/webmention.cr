@@ -8,8 +8,8 @@
 
    ```yaml
    dependencies:
-     webmention-cr:
-       gitlab: eniehack/webmention-cr
+     webmention:
+       gitlab: eniehack/webmention.cr
    ```
 
 2. Run `shards install`
