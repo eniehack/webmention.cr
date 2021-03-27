@@ -5,6 +5,7 @@ require "xml"
 
 module Webmention
   VERSION = "0.1.0"
+
   class Discover
     def initialize(@resp : HTTP::Client::Response, @target_url : URI)
       @webmention_endpoint = Set(URI).new
@@ -60,7 +61,7 @@ module Webmention
         element.attributes["rel"].content.split(" ").each do |e|
           next unless e == "webmention"
           next if element.attributes["href"]?.nil?
-            @endpoint_candidates.add URI.parse element.attributes["href"].content
+          @endpoint_candidates.add URI.parse element.attributes["href"].content
         end
       end
     end

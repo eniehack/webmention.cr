@@ -1,7 +1,7 @@
 require "./spec_helper"
 require "http/client"
 
-USERAGENT = HTTP::Headers.new.add("User-Agent", "WebMention.cr test client (https://gitlab.com/eniehack/webmention-cr)")
+USERAGENT       = HTTP::Headers.new.add("User-Agent", "WebMention.cr test client (https://gitlab.com/eniehack/webmention-cr)")
 WEBMENTIONROCKS = "https://webmention.rocks"
 
 macro discover_test(first, last)
